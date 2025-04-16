@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { Download, Plus, Filter } from "lucide-react";
 
 import { Button } from "../../components/ui/button";
@@ -13,7 +13,7 @@ interface Payment {
 }
 
 function SocietyPaymentsTab(): React.ReactNode {
-  const { id } = useParams<{ id: string }>();
+  // const { id } = useParams<{ id: string }>();
 
   // Mock payments data to match the image
   const payments: Payment[] = [

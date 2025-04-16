@@ -1,11 +1,11 @@
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { Check, Calendar } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Checkbox } from "../../components/ui/checkbox";
 
 function SocietySubscriptionTab(): React.ReactNode {
-  const { id } = useParams<{ id: string }>();
+  // const { id } = useParams<{ id: string }>();
 
   // Mock subscription history data
   const subscriptionHistory = [

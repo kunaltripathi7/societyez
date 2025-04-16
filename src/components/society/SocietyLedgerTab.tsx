@@ -1,9 +1,9 @@
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { Download } from "lucide-react";
 import { Button } from "../../components/ui/button";
 
 function SocietyLedgerTab(): React.ReactNode {
-  const { id } = useParams<{ id: string }>();
+  // const { id } = useParams<{ id: string }>();
 
   // Mock transaction data
   const transactions = [

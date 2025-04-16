@@ -9,7 +9,7 @@ function SocietyDetailsLayout(): React.ReactNode {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const location = useLocation();
-  const [societyData, setSocietyData] = useState<SocietyData>({
+  const [societyData] = useState<SocietyData>({
     name: "Green Valley Apartments",
     id: "GVA-2025-001",
     registrationDate: "Jan 15, 2025",

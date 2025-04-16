@@ -1,10 +1,10 @@
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { Edit, Trash, Plus, Search } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 
 function SocietyRolesTab(): React.ReactNode {
-  const { id } = useParams<{ id: string }>();
+  // const { id } = useParams<{ id: string }>();
 
   // Mock users data
   const users = [

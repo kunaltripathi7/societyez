@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import { MessageSquare, Download, Edit } from "lucide-react";
 import Card from "./Card";
 import InfoRow from "./InfoRow";
@@ -7,7 +7,7 @@ import { Button } from "../../components/ui/button";
 import { OutletContextType } from "../../types/society";
 
 function SocietyOverviewTab(): React.ReactNode {
-  const { id } = useParams<{ id: string }>();
+  // const { id } = useParams<{ id: string }>();
   const { societyData } = useOutletContext<OutletContextType>();
 
   return (
