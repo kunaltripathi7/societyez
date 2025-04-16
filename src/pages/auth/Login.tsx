@@ -14,6 +14,7 @@ import {
 import { Input } from "../../components/ui/input";
 import { Checkbox } from "../../components/ui/checkbox";
 import { useNavigate } from "react-router-dom";
+import Carousel from "../../components/Carousel";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address" }),
@@ -59,27 +60,7 @@ const Login = () => {
 
   return (
     <div className="flex h-screen">
-      <div className="hidden lg:flex w-1/2 bg-slate-100 flex-col items-center justify-center p-8 relative">
-        <div className="px-8 ">
-          <div className="mb-10">
-            <img
-              src="/onboarding.svg"
-              alt="Onboarding Illustration"
-              className="mx-auto"
-              style={{ maxWidth: "400px" }}
-            />
-          </div>
-          <div className="text-center space-y-2">
-            <h1 className="text-2xl font-bold text-slate-800">
-              Effortlessly Manage and Streamline Your Society Operations
-            </h1>
-            <p className="text-slate-600">
-              Everything you need to manage your societies in one place. Join us
-              today!
-            </p>
-          </div>
-        </div>
-      </div>
+      <Carousel />
 
       <div className="w-full lg:w-[40%] flex flex-col justify-center mx-auto p-5 sm:p-8 md:p-16 lg:p-20">
         <div className="flex flex-col items-center justify-center">

@@ -105,17 +105,20 @@ const Navbar: React.FC<NavbarProps> = ({
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>Account Settings</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem className="cursor-pointer">
+                <DropdownMenuItem
+                  className="cursor-pointer"
+                  onClick={() => navigate("/profile")}
+                >
                   Edit Profile
-                </DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer">
-                  Change Password
                 </DropdownMenuItem>
                 <DropdownMenuItem className="cursor-pointer">
                   Notification Settings
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem className="text-red-600 cursor-pointer">
+                <DropdownMenuItem
+                  className="text-red-600 cursor-pointer"
+                  onClick={() => navigate("/")}
+                >
                   Logout
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -173,14 +176,6 @@ const Navbar: React.FC<NavbarProps> = ({
             >
               <User className="h-5 w-5 text-slate-600" />
               <span className="text-slate-600">Profile</span>
-            </a>
-            <a
-              href="/settings"
-              className="flex items-center gap-2 px-4 py-3 rounded-lg hover:bg-slate-100"
-              onClick={() => setMobileNavOpen(false)}
-            >
-              <Settings className="h-5 w-5 text-slate-600" />
-              <span className="text-slate-600">Settings</span>
             </a>
           </nav>
         </div>
