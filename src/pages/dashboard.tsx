@@ -20,7 +20,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-import Navbar from "../../components/Navbar";
+import Navbar from "../components/Navbar";
 
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();

@@ -164,7 +164,7 @@ const Login = () => {
 
             <Button
               type="submit"
-              className="w-full bg-slate-900 hover:bg-slate-800 text-white h-11"
+              className="w-full cursor-pointer bg-slate-900 hover:bg-slate-800 text-white h-11"
             >
               Login <span className="ml-2">→</span>
             </Button>
