@@ -1,27 +1,32 @@
 import { useState, useEffect } from "react";
+import onboarding from "../assets/onboarding.svg"
+import apartment from "../assets/apartment.svg"
+import subscription from "../assets/subscription.svg";
+import dashboard from "../assets/dashboard.svg";
+
 
 // Carousel data for all onboarding screens
 const carouselData = [
   {
-    image: "/onboarding.svg",
+    image: onboarding,
     title: "Effortlessly Manage and Streamline Your Society Operations",
     description:
       "Everything you need to manage your societies in one place. Join us today!",
   },
   {
-    image: "/subscription.svg",
+    image: subscription,
     title: "Flexible Subscription Plans for Every Need",
     description:
       "Choose the perfect subscription plan tailored to your society's requirements.",
   },
   {
-    image: "/dashboard.svg",
+    image: dashboard,
     title: "Comprehensive Dashboard for Complete Visibility",
     description:
       "Get a bird's eye view of all activities happening in your society.",
   },
   {
-    image: "/apartment.svg",
+    image: apartment,
     title: "Streamlined Apartment Management System",
     description:
       "Simplify apartment management, maintenance requests, and resident communications.",
@@ -79,7 +84,7 @@ const LeftPanelCarousel = () => {
               key={index}
               onClick={() => setCurrentSlide(index)}
               className={`w-3 h-3 rounded-full transition-all ${
-                index === currentSlide ? "bg-orange-500 w-6" : "bg-slate-300"
+                index === currentSlide ? "bg-primary w-6" : "bg-slate-300"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

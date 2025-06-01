@@ -15,6 +15,7 @@ import { Input } from "../../components/ui/input";
 import { Checkbox } from "../../components/ui/checkbox";
 import { useNavigate } from "react-router-dom";
 import Carousel from "../../components/Carousel";
+import AuthFormHeader from "@/components/AuthFormHeader";
 
 const formSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address" }),
@@ -63,17 +64,7 @@ const Login = () => {
       <Carousel />
 
       <div className="w-full lg:w-[40%] flex flex-col justify-center mx-auto p-5 sm:p-8 md:p-16 lg:p-20">
-        <div className="flex flex-col items-center justify-center">
-          <div className="flex mb-8">
-            <div className="w-8 h-5 bg-orange-500 transform skew-x-[-20deg] mr-1"></div>
-            <div className="w-8 h-5 bg-slate-900 transform skew-x-[-20deg]"></div>
-          </div>
-
-          <div className="space-y-2 mb-10">
-            <h2 className="text-2xl font-bold">Welcome Back !</h2>
-            <p className="text-slate-500 text-sm">Please enter your details</p>
-          </div>
-        </div>
+        <AuthFormHeader title="Welcome Back !" subtitle="Please enter your details" />
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -124,7 +115,7 @@ const Login = () => {
                       id="rememberMe"
                       checked={field.value}
                       onCheckedChange={field.onChange}
-                      className="data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500"
+                      className="data-[state=checked]:bg-primary data-[state=checked]:border-border data-[state=unchecked]:bg-primary/20 data-[state=unchecked]:border-border"
                     />
                     <label
                       htmlFor="rememberMe"
@@ -137,7 +128,7 @@ const Login = () => {
               />
               <a
                 href="/forgot-password"
-                className="text-sm text-slate-500 hover:text-orange-500"
+                className="text-sm text-slate-500 hover:text-primary"
               >
                 Forgot Password?
               </a>
@@ -145,7 +136,7 @@ const Login = () => {
 
             <Button
               type="submit"
-              className="w-full cursor-pointer bg-slate-900 hover:bg-slate-800 text-white h-11"
+              className="w-full cursor-pointer bg-primary hover:bg-accent text-white h-11"
             >
               Login <span className="ml-2">→</span>
             </Button>
@@ -155,11 +146,11 @@ const Login = () => {
         <div className="mt-8 text-center text-sm text-slate-500">
           <p>
             By creating an account, you agree to our{" "}
-            <a href="/terms" className="text-orange-500 hover:underline">
+            <a href="/terms" className="text-primary hover:underline">
               Terms of Service
             </a>{" "}
             and{" "}
-            <a href="/privacy" className="text-orange-500 hover:underline">
+            <a href="/privacy" className="text-primary hover:underline">
               Privacy Policy
             </a>
           </p>
@@ -170,7 +161,7 @@ const Login = () => {
             Don&apos;t have an account?{" "}
             <a
               href="/signup"
-              className="text-orange-500 font-medium hover:underline"
+              className="text-primary font-medium hover:underline"
             >
               Sign Up
             </a>

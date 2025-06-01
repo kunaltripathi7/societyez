@@ -16,6 +16,7 @@ import { Checkbox } from "../../components/ui/checkbox";
 import { useNavigate } from "react-router-dom";
 import Carousel from "../../components/Carousel";
 import { toast } from "sonner";
+import AuthFormHeader from "@/components/AuthFormHeader";
 
 const formSchema = z
   .object({
@@ -63,20 +64,7 @@ const Signup = () => {
       <Carousel />
 
       <div className="w-full lg:w-[40%] flex flex-col justify-center mx-auto p-5 sm:p-8 md:p-16 lg:p-20">
-        <div className="flex flex-col items-center justify-center">
-          <div className="flex mb-8">
-            <div className="w-8 h-5 bg-orange-500 transform skew-x-[-20deg] mr-1"></div>
-            <div className="w-8 h-5 bg-slate-900 transform skew-x-[-20deg]"></div>
-          </div>
-
-          <div className="space-y-2 mb-10">
-            <h2 className="text-2xl font-bold">Create Your Account</h2>
-            <p className="text-slate-500 text-sm">
-              Join us and start managing your society efficiently
-            </p>
-          </div>
-        </div>
-
+        <AuthFormHeader title="Create Your Account" subtitle="Join us and start managing your society efficiently" />
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
             <FormField
@@ -162,7 +150,7 @@ const Signup = () => {
                     <Checkbox
                       checked={field.value}
                       onCheckedChange={field.onChange}
-                      className="data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-500 mt-1"
+                      className="data-[state=checked]:bg-primary data-[state=checked]:border-primary mt-1 data-[state=unchecked]:border-slate-300 data-[state=unchecked]:bg-white h-4 w-4"
                     />
                   </FormControl>
                   <div className="space-y-1 leading-none">
@@ -170,14 +158,14 @@ const Signup = () => {
                       I agree to the{" "}
                       <a
                         href="/terms"
-                        className="text-orange-500 hover:underline"
+                        className="text-primary hover:underline"
                       >
                         Terms of Service
                       </a>{" "}
                       and{" "}
                       <a
                         href="/privacy"
-                        className="text-orange-500 hover:underline"
+                        className="text-primary hover:underline"
                       >
                         Privacy Policy
                       </a>
@@ -190,7 +178,7 @@ const Signup = () => {
 
             <Button
               type="submit"
-              className="w-full cursor-pointer bg-slate-900 hover:bg-slate-800 text-white h-11 mt-4"
+              className="w-full cursor-pointer bg-primary hover:bg-accent text-white h-11 mt-4"
             >
               Create Account <span className="ml-2">→</span>
             </Button>
@@ -202,7 +190,7 @@ const Signup = () => {
             Already have an account?{" "}
             <a
               href="/login"
-              className="text-orange-500 font-medium hover:underline"
+              className="text-primary font-medium hover:underline"
             >
               Log In
             </a>

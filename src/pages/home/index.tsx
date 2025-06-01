@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Search } from "lucide-react";
 
-import Navbar from "../../components/Navbar"; // Import the new Navbar component
+import Navbar from "../../components/Navbar"; 
 import { Button } from "../../components/ui/button";
 import {
   Form,

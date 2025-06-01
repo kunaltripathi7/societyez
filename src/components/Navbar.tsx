@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { House, Layout, User, Menu, X, Settings } from "lucide-react";
+import logo from "../assets/logo.svg"; 
 
 import { Button } from "../components/ui/button";
 import {
@@ -33,31 +34,13 @@ const Navbar: React.FC<NavbarProps> = ({
       {/* Header/Navbar */}
       <header className="bg-white shadow-sm border-b border-slate-200 sticky top-0 z-30">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            {/* Logo Icon */}
-            <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                <polyline points="9 22 9 12 15 12 15 22"></polyline>
-              </svg>
-            </div>
-
-            {/* Logo Text */}
-            <h1 className="text-lg font-semibold text-orange-500">
-              Society EZ
-            </h1>
-          </div>
-
+            <a href="/home" className="flex items-center">
+              <img
+                src={logo}
+                alt="SocietyEz Logo"
+                className="h-12 w-auto"
+              />
+            </a>
           {/* Desktop Navigation - Moved to the right */}
           <nav className="hidden md:flex items-center gap-6 mr-auto ml-16">
             <a
