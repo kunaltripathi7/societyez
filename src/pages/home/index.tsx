@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Search } from "lucide-react";
 
-import Navbar from "../../components/Navbar"; 
 import { Button } from "../../components/ui/button";
 import {
   Form,
@@ -100,9 +99,6 @@ const Home: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* Using the Navbar component with the active page set to "home" */}
-      <Navbar activePage="home" userRole="SuperAdmin" />
-
       {/* Main Content */}
       <div className="container mx-auto py-8 px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -180,7 +176,7 @@ const Home: React.FC = () => {
                     name="committeeMemberName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Committee Member Name</FormLabel>
+                        <FormLabel>Admin Name</FormLabel>
                         <FormControl>
                           <Input
                             placeholder="Enter committee member name"
@@ -215,9 +211,9 @@ const Home: React.FC = () => {
                     name="phoneNumber"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Phone Number</FormLabel>
+                        <FormLabel>Mobile Number</FormLabel>
                         <FormControl>
-                          <Input placeholder="Enter phone number" {...field} />
+                          <Input placeholder="Enter mobile number" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -226,7 +222,7 @@ const Home: React.FC = () => {
 
                   <Button
                     type="submit"
-                    className="w-full bg-orange-500 hover:bg-orange-600 text-white"
+                    className="w-full bg-primary hover:bg-accent text-white"
                   >
                     Create Society
                   </Button>
@@ -271,7 +267,7 @@ const Home: React.FC = () => {
                     .map((society) => (
                       <div
                         key={society.id}
-                        className="border border-slate-200 rounded-md hover:border-orange-300 cursor-pointer transition-colors relative"
+                        className="border border-slate-200 rounded-md hover:border-primary cursor-pointer transition-colors relative"
                         onClick={() => handleSocietyClick(society.id)}
                       >
                         <div className="p-4">

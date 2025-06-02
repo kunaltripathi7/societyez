@@ -44,18 +44,18 @@ function SocietyPaymentsTab(): React.ReactNode {
     <div className="p-4">
       <div className="flex justify-between mb-4">
         <div className="flex gap-2">
-          <Button className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600">
+          <Button className="flex items-center gap-2 bg-primary hover:bg-accent cursor-pointer">
             <Plus size={16} />
             New Payment
           </Button>
-          <Button variant="outline" className="flex items-center gap-2">
+          <Button variant="outline" className="flex items-center gap-2 cursor-pointer">
             Send Reminder
           </Button>
         </div>
 
         <div className="flex gap-2">
           <Input placeholder="Search payments..." className="w-64" />
-          <Button variant="outline" className="flex items-center gap-2">
+          <Button variant="outline" className="flex items-center gap-2 cursor-pointer">
             <Filter size={16} />
             Filter
           </Button>
@@ -115,10 +115,10 @@ function SocietyPaymentsTab(): React.ReactNode {
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {payment.method}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 ">
                   <Button
                     variant="ghost"
-                    className="text-gray-600 hover:text-gray-800"
+                    className="text-gray-600 hover:text-white cursor-pointer"
                   >
                     <Download size={16} />
                   </Button>
@@ -133,23 +133,23 @@ function SocietyPaymentsTab(): React.ReactNode {
         <div className="text-sm text-gray-500">
           Showing 1 to 3 of 12 entries
         </div>
-        <div className="flex gap-2">
-          <Button variant="outline" className="text-sm">
+        <div className="flex gap-2 ">
+          <Button variant="outline" className="text-sm cursor-pointer">
             Previous
           </Button>
           <Button
             variant="outline"
-            className="text-sm bg-orange-500 text-white"
+            className="text-sm bg-primary text-white cursor-pointer"
           >
             1
           </Button>
-          <Button variant="outline" className="text-sm">
+          <Button variant="outline" className="text-sm cursor-pointer">
             2
           </Button>
-          <Button variant="outline" className="text-sm">
+          <Button variant="outline" className="text-sm cursor-pointer">
             3
           </Button>
-          <Button variant="outline" className="text-sm">
+          <Button variant="outline" className="text-sm cursor-pointer">
             Next
           </Button>
         </div>

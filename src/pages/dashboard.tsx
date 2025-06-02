@@ -20,7 +20,6 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-import Navbar from "../components/Navbar";
 
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
@@ -42,9 +41,6 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      {/* Use the Navbar component with activePage set to "dashboard" */}
-      <Navbar activePage="dashboard" userRole="SuperAdmin" />
-
       <div className="container mx-auto py-4 px-4">
         <div className="p-6 space-y-6">
           {/* Welcome Section */}
@@ -61,7 +57,7 @@ const Dashboard: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <Card
               className={`group cursor-pointer transition-all duration-300 ${
-                hoveredCard === "societies" ? "border-orange-300 shadow-md" : ""
+                hoveredCard === "societies" ? "border-primary shadow-md" : ""
               }`}
               onMouseEnter={() => setHoveredCard("societies")}
               onMouseLeave={() => setHoveredCard(null)}
@@ -71,7 +67,7 @@ const Dashboard: React.FC = () => {
                 <CardTitle className="text-sm font-medium">
                   Total Societies
                 </CardTitle>
-                <Building2 className="h-5 w-5 text-orange-500 group-hover:scale-110 transition-transform" />
+                <Building2 className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
               </CardHeader>
               <CardContent className="relative">
                 <div className="text-2xl font-bold">248</div>
@@ -85,7 +81,7 @@ const Dashboard: React.FC = () => {
 
             <Card
               className={`group cursor-pointer transition-all duration-300 ${
-                hoveredCard === "payments" ? "border-orange-300 shadow-md" : ""
+                hoveredCard === "payments" ? "border-primary shadow-md" : ""
               }`}
               onMouseEnter={() => setHoveredCard("payments")}
               onMouseLeave={() => setHoveredCard(null)}
@@ -95,7 +91,7 @@ const Dashboard: React.FC = () => {
                 <CardTitle className="text-sm font-medium">
                   Pending Payments
                 </CardTitle>
-                <CircleDollarSign className="h-5 w-5 text-orange-500 group-hover:scale-110 transition-transform" />
+                <CircleDollarSign className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
               </CardHeader>
               <CardContent className="relative">
                 <div className="text-2xl font-bold">₹4,28,650</div>
@@ -103,13 +99,13 @@ const Dashboard: React.FC = () => {
                   <ArrowDown className="h-4 w-4 mr-1" />
                   <span>8% from last month</span>
                 </div>
-                <ChevronRight className="absolute right-2 bottom-2 h-5 w-5 text-slate-300 opacity-0 group-hover:opacity-100 group-hover:text-orange-500 transition-all" />
+                <ChevronRight className="absolute right-2 bottom-2 h-5 w-5 text-slate-300 opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all" />
               </CardContent>
             </Card>
 
             <Card
               className={`group cursor-pointer transition-all duration-300 ${
-                hoveredCard === "users" ? "border-orange-300 shadow-md" : ""
+                hoveredCard === "users" ? "border-primary shadow-md" : ""
               }`}
               onMouseEnter={() => setHoveredCard("users")}
               onMouseLeave={() => setHoveredCard(null)}
@@ -119,7 +115,7 @@ const Dashboard: React.FC = () => {
                 <CardTitle className="text-sm font-medium">
                   Active Users
                 </CardTitle>
-                <Users className="h-5 w-5 text-orange-500 group-hover:scale-110 transition-transform" />
+                <Users className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
               </CardHeader>
               <CardContent className="relative">
                 <div className="text-2xl font-bold">1,849</div>
@@ -127,7 +123,7 @@ const Dashboard: React.FC = () => {
                   <ArrowUp className="h-4 w-4 mr-1" />
                   <span>24% from last month</span>
                 </div>
-                <ChevronRight className="absolute right-2 bottom-2 h-5 w-5 text-slate-300 opacity-0 group-hover:opacity-100 group-hover:text-orange-500 transition-all" />
+                <ChevronRight className="absolute right-2 bottom-2 h-5 w-5 text-slate-300 opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all" />
               </CardContent>
             </Card>
           </div>
@@ -137,7 +133,7 @@ const Dashboard: React.FC = () => {
             <Card
               className={`group cursor-pointer transition-all duration-300 ${
                 hoveredCard === "notifications"
-                  ? "border-orange-300 shadow-md"
+                  ? "border-primary shadow-md"
                   : ""
               }`}
               onMouseEnter={() => setHoveredCard("notifications")}
@@ -148,7 +144,7 @@ const Dashboard: React.FC = () => {
                 <CardTitle className="text-sm font-medium">
                   Unread Notifications
                 </CardTitle>
-                <Bell className="h-5 w-5 text-orange-500 group-hover:scale-110 transition-transform" />
+                <Bell className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
               </CardHeader>
               <CardContent className="relative">
                 <div className="text-2xl font-bold">36</div>
@@ -156,13 +152,13 @@ const Dashboard: React.FC = () => {
                   <Clock className="h-4 w-4 mr-1" />
                   <span>Last hour</span>
                 </div>
-                <ChevronRight className="absolute right-2 bottom-2 h-5 w-5 text-slate-300 opacity-0 group-hover:opacity-100 group-hover:text-orange-500 transition-all" />
+                <ChevronRight className="absolute right-2 bottom-2 h-5 w-5 text-slate-300 opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all" />
               </CardContent>
             </Card>
 
             <Card
               className={`group cursor-pointer transition-all duration-300 ${
-                hoveredCard === "access" ? "border-orange-300 shadow-md" : ""
+                hoveredCard === "access" ? "border-primary shadow-md" : ""
               }`}
               onMouseEnter={() => setHoveredCard("access")}
               onMouseLeave={() => setHoveredCard(null)}
@@ -172,7 +168,7 @@ const Dashboard: React.FC = () => {
                 <CardTitle className="text-sm font-medium">
                   Access Requests
                 </CardTitle>
-                <Key className="h-5 w-5 text-orange-500 group-hover:scale-110 transition-transform" />
+                <Key className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
               </CardHeader>
               <CardContent className="relative">
                 <div className="text-2xl font-bold">12</div>
@@ -180,13 +176,13 @@ const Dashboard: React.FC = () => {
                   <span className="h-2 w-2 bg-amber-500 rounded-full mr-1"></span>
                   <span>Pending approval</span>
                 </div>
-                <ChevronRight className="absolute right-2 bottom-2 h-5 w-5 text-slate-300 opacity-0 group-hover:opacity-100 group-hover:text-orange-500 transition-all" />
+                <ChevronRight className="absolute right-2 bottom-2 h-5 w-5 text-slate-300 opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all" />
               </CardContent>
             </Card>
 
             <Card
               className={`group cursor-pointer transition-all duration-300 ${
-                hoveredCard === "ledger" ? "border-orange-300 shadow-md" : ""
+                hoveredCard === "ledger" ? "border-primary shadow-md" : ""
               }`}
               onMouseEnter={() => setHoveredCard("ledger")}
               onMouseLeave={() => setHoveredCard(null)}
@@ -196,7 +192,7 @@ const Dashboard: React.FC = () => {
                 <CardTitle className="text-sm font-medium">
                   Monthly Ledger
                 </CardTitle>
-                <ScrollText className="h-5 w-5 text-orange-500 group-hover:scale-110 transition-transform" />
+                <ScrollText className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
               </CardHeader>
               <CardContent className="relative">
                 <div className="text-2xl font-bold">₹12.4L</div>
@@ -204,7 +200,7 @@ const Dashboard: React.FC = () => {
                   <ArrowUp className="h-4 w-4 mr-1" />
                   <span>18% from last month</span>
                 </div>
-                <ChevronRight className="absolute right-2 bottom-2 h-5 w-5 text-slate-300 opacity-0 group-hover:opacity-100 group-hover:text-orange-500 transition-all" />
+                <ChevronRight className="absolute right-2 bottom-2 h-5 w-5 text-slate-300 opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all" />
               </CardContent>
             </Card>
           </div>
@@ -226,8 +222,8 @@ const Dashboard: React.FC = () => {
                       className="flex items-center gap-4 pb-4 border-b last:border-0 last:pb-0 hover:bg-slate-50 p-2 rounded-md cursor-pointer transition-colors"
                       onClick={() => navigate("/activity-details")}
                     >
-                      <div className="h-9 w-9 rounded-full bg-orange-100 flex items-center justify-center">
-                        <Users className="h-5 w-5 text-orange-500" />
+                      <div className="h-9 w-9 rounded-full bg-primary flex items-center justify-center">
+                        <Users className="h-5 w-5 text-white" />
                       </div>
                       <div className="flex-1">
                         <div className="font-medium">

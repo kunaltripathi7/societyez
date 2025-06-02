@@ -1,11 +1,22 @@
 // import { useParams } from "react-router-dom";
-import { Check, Calendar } from "lucide-react";
+import { Check } from "lucide-react";
 import { Button } from "../../components/ui/button";
-import { Input } from "../../components/ui/input";
 import { Checkbox } from "../../components/ui/checkbox";
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import React from "react";
+import { DatePicker } from "../ui/datePicker";
+
 
 function SocietySubscriptionTab(): React.ReactNode {
   // const { id } = useParams<{ id: string }>();
+   const [date, setDate] = React.useState<Date>();
 
   // Mock subscription history data
   const subscriptionHistory = [
@@ -23,6 +34,11 @@ function SocietySubscriptionTab(): React.ReactNode {
     },
   ];
 
+  const subscriptionPlans = [2, 7, 15, 30, 60, 90, 180].map((days) => ({
+    label: `${days} Day${days > 1 ? "s" : ""}`,
+    value: days,
+  }));
+
   return (
     <div className="p-4">
       <div className="grid grid-cols-2 gap-8">
@@ -33,7 +49,7 @@ function SocietySubscriptionTab(): React.ReactNode {
           <div className="bg-orange-50 border border-orange-100 rounded-md p-4 mb-4">
             <div className="flex justify-between items-center">
               <div>
-                <h3 className="text-orange-600 font-medium">
+                <h3 className="text-primary font-medium">
                   Premium Quarterly Plan
                 </h3>
                 <p className="text-sm text-gray-600">
@@ -62,10 +78,12 @@ function SocietySubscriptionTab(): React.ReactNode {
           </div>
 
           <div className="flex gap-3">
-            <Button className="bg-orange-500 hover:bg-orange-600">
+            <Button className="bg-primary hover:bg-accent cursor-pointer">
               Upgrade Plan
             </Button>
-            <Button variant="outline">Cancel Subscription</Button>
+            <Button variant="outline" className="cursor-pointer">
+              Cancel Subscription
+            </Button>
           </div>
         </div>
 
@@ -75,27 +93,32 @@ function SocietySubscriptionTab(): React.ReactNode {
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Duration
-              </label>
-              <select className="w-full border rounded-md px-3 py-2">
-                <option>7 Days</option>
-                <option>14 Days</option>
-                <option>30 Days</option>
-              </select>
-            </div>
+  <label className="block text-sm font-medium text-gray-700 mb-1">
+    Duration
+  </label>
+  <Select>
+    <SelectTrigger className="w-full">
+      <SelectValue placeholder="Select duration" />
+    </SelectTrigger>
+    <SelectContent>
+      {subscriptionPlans.map((plan) => (
+        <SelectItem 
+          key={plan.value} 
+          value={plan.value.toString()}
+          className="cursor-pointer"
+        >
+          {plan.label}
+        </SelectItem>
+      ))}
+    </SelectContent>
+  </Select>
+</div>
 
-            <div>
+             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Start Date
               </label>
-              <div className="relative">
-                <Input placeholder="dd-mm-yyyy" className="w-full" />
-                <Calendar
-                  size={18}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                />
-              </div>
+              <DatePicker date={date} setDate={setDate} />
             </div>
 
             <div>
@@ -105,16 +128,16 @@ function SocietySubscriptionTab(): React.ReactNode {
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <Checkbox id="basic-features" defaultChecked />
-                  <label htmlFor="basic-features">Basic features</label>
+                  <label htmlFor="basic-features" className="cursor-pointer">Basic features</label>
                 </div>
                 <div className="flex items-center gap-2">
                   <Checkbox id="premium-features" defaultChecked />
-                  <label htmlFor="premium-features">Premium features</label>
+                  <label htmlFor="premium-features" className="cursor-pointer">Premium features</label>
                 </div>
               </div>
             </div>
 
-            <Button className="w-full bg-orange-500 hover:bg-orange-600 mt-4">
+            <Button className="w-full bg-primary hover:bg-accent mt-4 cursor-pointer">
               Assign Demo Access
             </Button>
           </div>

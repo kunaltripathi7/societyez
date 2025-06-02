@@ -4,12 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Navbar from "@/components/Navbar";
 
 const ProfileSettings = () => {
   return (
     <>
-      <Navbar />
       <div className="container mx-auto py-6 px-4 max-w-4xl">
         {/* Profile Overview Card */}
         <Card className="mb-6">
@@ -29,14 +27,14 @@ const ProfileSettings = () => {
 
               <div className="w-full space-y-4">
                 <div>
-                  <label className="text-sm font-medium text-blue-600 block">
+                  <label className="text-sm font-medium text-primary block">
                     Full Name
                   </label>
                   <Input defaultValue="John Anderson" className="mt-1" />
                 </div>
 
                 <div>
-                  <label className="text-sm font-medium text-blue-600 block">
+                  <label className="text-sm font-medium text-primary block">
                     Email
                   </label>
                   <Input
@@ -49,7 +47,7 @@ const ProfileSettings = () => {
                   <span className="px-3 py-1 bg-orange-100 text-orange-600 rounded-md text-sm">
                     Super Admin
                   </span>
-                  <Button className="bg-orange-500 hover:bg-orange-600">
+                  <Button className="bg-primary hover:bg-accent cursor-pointer">
                     Save Changes
                   </Button>
                 </div>
@@ -65,7 +63,7 @@ const ProfileSettings = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <label className="text-sm font-medium text-blue-600 block">
+              <label className="text-sm font-medium text-primary block">
                 Current Password
               </label>
               <div className="relative mt-1">
@@ -78,7 +76,7 @@ const ProfileSettings = () => {
             </div>
 
             <div>
-              <label className="text-sm font-medium text-blue-600 block">
+              <label className="text-sm font-medium text-primary block">
                 New Password
               </label>
               <div className="relative mt-1">
@@ -91,7 +89,7 @@ const ProfileSettings = () => {
             </div>
 
             <div>
-              <label className="text-sm font-medium text-blue-600 block">
+              <label className="text-sm font-medium text-primary block">
                 Confirm New Password
               </label>
               <div className="relative mt-1">
@@ -104,7 +102,7 @@ const ProfileSettings = () => {
             </div>
 
             <div>
-              <Button className="bg-orange-500 hover:bg-orange-600">
+              <Button className="bg-primary hover:bg-accent cursor-pointer">
                 Update Password
               </Button>
             </div>

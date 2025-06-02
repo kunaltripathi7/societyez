@@ -2,6 +2,10 @@
 import { Edit, Trash, Plus, Search } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
+import user1 from "../../assets/avatars/user1.jpg";
+import user2 from "../../assets/avatars/user2.jpg"; 
+import user3 from "../../assets/avatars/user3.jpg";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select";
 
 function SocietyRolesTab(): React.ReactNode {
   // const { id } = useParams<{ id: string }>();
@@ -13,21 +17,21 @@ function SocietyRolesTab(): React.ReactNode {
       name: "Robert Smith",
       role: "Committee President",
       status: "Active",
-      avatar: "/avatars/user2.jpg",
+      avatar: user1,
     },
     {
       id: 2,
       name: "Sarah Johnson",
       role: "Society Admin",
       status: "Active",
-      avatar: "/avatars/user1.jpg",
+      avatar: user2,
     },
     {
       id: 3,
       name: "Michael Chen",
       role: "Accountant",
       status: "Inactive",
-      avatar: "/avatars/user3.jpg",
+      avatar: user3,
     },
   ];
 
@@ -43,11 +47,22 @@ function SocietyRolesTab(): React.ReactNode {
             />
             <Input placeholder="Search users..." className="pl-10 w-64" />
           </div>
-          <select className="border rounded-md px-3 py-2">
-            <option>All Roles</option>
-          </select>
+          <Select>
+                <SelectTrigger className="w-[180px] cursor-pointer">
+                  <SelectValue placeholder="Select a role" />
+                </SelectTrigger>
+                <SelectContent>
+              <SelectGroup >
+              <SelectLabel>Roles</SelectLabel>
+              <SelectItem value="all" className="cursor-pointer">All Roles</SelectItem>
+              <SelectItem value="president" className="cursor-pointer">Committee President</SelectItem>
+              <SelectItem value="admin" className="cursor-pointer">Society Admin</SelectItem>
+              <SelectItem value="accountant" className="cursor-pointer">Accountant</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+          </Select>
         </div>
-        <Button className="bg-orange-500 hover:bg-orange-600 flex items-center gap-2">
+        <Button className="bg-primary hover:bg-accent flex items-center gap-2">
           <Plus size={16} />
           Add New User
         </Button>
@@ -85,13 +100,13 @@ function SocietyRolesTab(): React.ReactNode {
               </span>
               <Button
                 variant="ghost"
-                className="text-gray-500 hover:text-gray-700"
+                className="text-gray-500 hover:text-white cursor-pointer"
               >
                 <Edit size={16} />
               </Button>
               <Button
                 variant="ghost"
-                className="text-gray-500 hover:text-gray-700"
+                className="text-gray-500 hover:text-white cursor-pointer"
               >
                 <Trash size={16} />
               </Button>
@@ -101,25 +116,27 @@ function SocietyRolesTab(): React.ReactNode {
       </div>
 
       {/* Pagination */}
-      <div className="flex justify-between mt-6 items-center">
-        <div className="text-sm text-gray-500">Showing 1-3 of 12 users</div>
-        <div className="flex gap-2">
-          <Button variant="outline" className="text-sm">
+           <div className="flex justify-between mt-4 items-center">
+        <div className="text-sm text-gray-500">
+          Showing 1 to 3 of 12 entries
+        </div>
+        <div className="flex gap-2 ">
+          <Button variant="outline" className="text-sm cursor-pointer">
             Previous
           </Button>
           <Button
             variant="outline"
-            className="text-sm bg-orange-500 text-white"
+            className="text-sm bg-primary text-white cursor-pointer"
           >
             1
           </Button>
-          <Button variant="outline" className="text-sm">
+          <Button variant="outline" className="text-sm cursor-pointer">
             2
           </Button>
-          <Button variant="outline" className="text-sm">
+          <Button variant="outline" className="text-sm cursor-pointer">
             3
           </Button>
-          <Button variant="outline" className="text-sm">
+          <Button variant="outline" className="text-sm cursor-pointer">
             Next
           </Button>
         </div>

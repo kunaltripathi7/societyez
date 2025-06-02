@@ -1,19 +1,22 @@
 import { ThemeProvider } from "./components/providers/theme-provider";
-import Login from "./pages/auth/Login";
-
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
-import Home from "./pages/home";
 import { Toaster } from "./components/ui/sonner";
+
+import AppLayout from "./components/layouts/AppLayout";
+import Login from "./pages/auth/Login";
+import Home from "./pages/home";
 import Dashboard from "./pages/dashboard";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 import Signup from "./pages/auth/Signup";
+import Profile from "./pages/Profile";
 import SocietyDetailsLayout from "./components/society/SocietyDetailsLayout";
 import SocietyOverviewTab from "./components/society/SocietyOverviewTab";
 import SocietyPaymentsTab from "./components/society/SocietyPaymentsTab";
 import SocietyLedgerTab from "./components/society/SocietyLedgerTab";
 import SocietyRolesTab from "./components/society/SocietyRolesTab";
 import SocietySubscriptionTab from "./components/society/SocietySubscriptionTab";
-import Profile from "./pages/Profile";
+import Ledger from "./pages/Ledger";
+import Societies from "./pages/Societies";
 
 function App() {
   return (
@@ -21,22 +24,28 @@ function App() {
       <Toaster />
       <Router>
         <Routes>
+          {/* Auth routes */}
           <Route path="/login" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/home" element={<Home />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/signup" element={<Signup />} />
 
-          {/* Society routes with nested tabs */}
-          <Route path="/society/:id" element={<SocietyDetailsLayout />}>
-            <Route index element={<SocietyOverviewTab />} />
-            <Route path="overview" element={<SocietyOverviewTab />} />
-            <Route path="payments" element={<SocietyPaymentsTab />} />
-            <Route path="ledger" element={<SocietyLedgerTab />} />
-            <Route path="roles" element={<SocietyRolesTab />} />
-            <Route path="subscription" element={<SocietySubscriptionTab />} />
+          {/* Protected routes with AppLayout */}
+          <Route element={<AppLayout />}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/societies" element={<Societies />} />
+            <Route path="/ledger" element={<Ledger />} />
+            <Route path="/profile" element={<Profile />} />
+            
+            {/* Society routes with nested tabs */}
+            <Route path="/society/:id" element={<SocietyDetailsLayout />}>
+              <Route index element={<SocietyOverviewTab />} />
+              <Route path="payments" element={<SocietyPaymentsTab />} />
+              <Route path="ledger" element={<SocietyLedgerTab />} />
+              <Route path="roles" element={<SocietyRolesTab />} />
+              <Route path="subscription" element={<SocietySubscriptionTab />} />
+            </Route>
           </Route>
-          <Route path="/profile" element={<Profile />} />
         </Routes>
       </Router>
     </ThemeProvider>

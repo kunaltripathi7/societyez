@@ -1,6 +1,7 @@
 // import { useParams } from "react-router-dom";
 import { Download } from "lucide-react";
 import { Button } from "../../components/ui/button";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
 function SocietyLedgerTab(): React.ReactNode {
   // const { id } = useParams<{ id: string }>();
@@ -11,6 +12,7 @@ function SocietyLedgerTab(): React.ReactNode {
       date: "Jan 15, 2025",
       description: "Monthly Maintenance Collection",
       category: "Maintenance",
+      financialPeriod: "Mar 2025 - Feb 2026",
       type: "Income",
       amount: "+₹45,000",
     },
@@ -18,6 +20,7 @@ function SocietyLedgerTab(): React.ReactNode {
       date: "Jan 12, 2025",
       description: "Security Staff Salary",
       category: "Salary",
+      financialPeriod: "Mar 2025 - Feb 2026",
       type: "Expense",
       amount: "-₹25,000",
     },
@@ -25,6 +28,7 @@ function SocietyLedgerTab(): React.ReactNode {
       date: "Jan 10, 2025",
       description: "Electricity Bill Payment",
       category: "Utilities",
+      financialPeriod: "Mar 2025 - Feb 2026",
       type: "Expense",
       amount: "-₹18,000",
     },
@@ -35,14 +39,33 @@ function SocietyLedgerTab(): React.ReactNode {
       {/* Filters and Export */}
       <div className="flex justify-between mb-6">
         <div className="flex gap-3">
-          <select className="border rounded-md px-3 py-2">
-            <option>January 2025</option>
-          </select>
-          <select className="border rounded-md px-3 py-2">
-            <option>All Categories</option>
-          </select>
+            <Select>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="January 2025" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+              <SelectItem value="jan2025" className="cursor-pointer">January 2025</SelectItem>
+              <SelectItem value="feb2025" className="cursor-pointer">February 2025</SelectItem>
+              <SelectItem value="mar2025" className="cursor-pointer">March 2025</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+            </Select>
+            <Select>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="All Categories" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+              <SelectItem value="all" className="cursor-pointer">All Categories</SelectItem>
+              <SelectItem value="maintenance" className="cursor-pointer">Maintenance</SelectItem>
+              <SelectItem value="salary" className="cursor-pointer">Salary</SelectItem>
+              <SelectItem value="utilities" className="cursor-pointer">Utilities</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+            </Select>
         </div>
-        <Button className="bg-orange-500 hover:bg-orange-600 flex items-center gap-2">
+        <Button className="bg-primary hover:bg-accent flex items-center gap-2 cursor-pointer">
           <Download size={16} />
           Export
         </Button>
@@ -64,7 +87,7 @@ function SocietyLedgerTab(): React.ReactNode {
         </div>
         <div className="bg-white p-6 rounded-md shadow-sm">
           <div className="text-gray-600 mb-2">Net Balance</div>
-          <div className="text-orange-500 text-2xl font-bold mb-1">
+          <div className="text-primary text-2xl font-bold mb-1">
             ₹1,33,000
           </div>
           <div className="text-gray-400 text-sm">Updated today at 2:30 PM</div>
@@ -85,6 +108,9 @@ function SocietyLedgerTab(): React.ReactNode {
                 DESCRIPTION
               </th>
               <th className="text-left py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Financial Period
+              </th>
+              <th className="text-left py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
                 CATEGORY
               </th>
               <th className="text-left py-3 text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -101,6 +127,9 @@ function SocietyLedgerTab(): React.ReactNode {
                 <td className="py-4 text-sm">{transaction.date}</td>
                 <td className="py-4 text-sm font-medium text-blue-600">
                   {transaction.description}
+                </td>
+                <td className="py-4 text-sm text-gray-600">
+                  {transaction.financialPeriod}
                 </td>
                 <td className="py-4 text-sm text-gray-600">
                   {transaction.category}
@@ -133,31 +162,31 @@ function SocietyLedgerTab(): React.ReactNode {
         </table>
 
         {/* Pagination */}
-        <div className="flex justify-between mt-4 items-center">
-          <div className="text-sm text-gray-500">
-            Showing 1 to 3 of 24 entries
-          </div>
-          <div className="flex gap-2">
-            <Button variant="outline" className="text-sm">
-              Previous
-            </Button>
-            <Button
-              variant="outline"
-              className="text-sm bg-orange-500 text-white"
-            >
-              1
-            </Button>
-            <Button variant="outline" className="text-sm">
-              2
-            </Button>
-            <Button variant="outline" className="text-sm">
-              3
-            </Button>
-            <Button variant="outline" className="text-sm">
-              Next
-            </Button>
-          </div>
+              <div className="flex justify-between mt-4 items-center">
+        <div className="text-sm text-gray-500">
+          Showing 1 to 3 of 12 entries
         </div>
+        <div className="flex gap-2 ">
+          <Button variant="outline" className="text-sm cursor-pointer">
+            Previous
+          </Button>
+          <Button
+            variant="outline"
+            className="text-sm bg-primary text-white cursor-pointer"
+          >
+            1
+          </Button>
+          <Button variant="outline" className="text-sm cursor-pointer">
+            2
+          </Button>
+          <Button variant="outline" className="text-sm cursor-pointer">
+            3
+          </Button>
+          <Button variant="outline" className="text-sm cursor-pointer">
+            Next
+          </Button>
+        </div>
+      </div>
       </div>
     </div>
   );

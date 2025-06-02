@@ -71,13 +71,12 @@ function SocietyDetailsLayout(): React.ReactNode {
         />
 
         <div className="mt-6">
-          {/* Render the active tab content */}
           <Outlet context={{ societyData }} />
         </div>
       </main>
 
       <footer className="py-4 text-center text-sm text-gray-500 border-t">
-        © 2023 SocietyAdmin Portal. All rights reserved.
+        © 2025 SocietyEZ. All rights reserved.
       </footer>
     </div>
   );

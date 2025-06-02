@@ -7,7 +7,6 @@ import { Button } from "../../components/ui/button";
 import { OutletContextType } from "../../types/society";
 
 function SocietyOverviewTab(): React.ReactNode {
-  // const { id } = useParams<{ id: string }>();
   const { societyData } = useOutletContext<OutletContextType>();
 
   return (
@@ -21,11 +20,11 @@ function SocietyOverviewTab(): React.ReactNode {
         <InfoRow label="Admin in Charge" value={societyData.adminInCharge} />
 
         <div className="flex gap-2 mt-6">
-          <Button className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600">
+          <Button className="flex items-center gap-2 bg-primary hover:bg-accent cursor-pointer">
             <MessageSquare size={16} />
             Contact Society
           </Button>
-          <Button variant="outline" className="flex items-center gap-2">
+          <Button variant="outline" className="flex items-center gap-2 cursor-pointer">
             <Download size={16} />
             Download Details
           </Button>
@@ -39,7 +38,7 @@ function SocietyOverviewTab(): React.ReactNode {
 
         <Button
           variant="ghost"
-          className="flex items-center gap-2 text-orange-500 hover:text-orange-600 mt-4 pl-0"
+          className="flex items-center gap-2 text-white bg-primary cursor-pointer mt-4 pl-0"
         >
           <Edit size={16} />
           Edit Address
