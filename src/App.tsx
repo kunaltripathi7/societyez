@@ -4,8 +4,8 @@ import { Toaster } from "./components/ui/sonner";
 
 import AppLayout from "./components/layouts/AppLayout";
 import Login from "./pages/auth/Login";
-import Home from "./pages/home";
-import Dashboard from "./pages/dashboard";
+import Home from "./pages/home/Index";
+import Dashboard from "./pages/Dashboard";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 import Signup from "./pages/auth/Signup";
 import Profile from "./pages/Profile";
@@ -17,6 +17,8 @@ import SocietyRolesTab from "./components/society/SocietyRolesTab";
 import SocietySubscriptionTab from "./components/society/SocietySubscriptionTab";
 import Ledger from "./pages/Ledger";
 import Societies from "./pages/Societies";
+import AccessRequests from "./pages/AccessRequests";
+import SocietyTechnicalTab from "./components/society/SocietyTechnicalTab";
 
 function App() {
   return (
@@ -34,6 +36,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/societies" element={<Societies />} />
+            <Route path="/access-requests" element={<AccessRequests />} />
             <Route path="/ledger" element={<Ledger />} />
             <Route path="/profile" element={<Profile />} />
             
@@ -44,6 +47,7 @@ function App() {
               <Route path="ledger" element={<SocietyLedgerTab />} />
               <Route path="roles" element={<SocietyRolesTab />} />
               <Route path="subscription" element={<SocietySubscriptionTab />} />
+              <Route path="support" element={<SocietyTechnicalTab />} />
             </Route>
           </Route>
         </Routes>

@@ -12,7 +12,7 @@ import Card from "../components/society/Card";
 import InfoRow from "../components/society/InfoRow";
 import { Button } from "@/components/ui/button";
 import { SocietyDetails } from "../types/types";
-import Navbar from "@/components/Navbar";
+
 
 export default function SocietyDetailsPage() {
   const societyData: SocietyDetails = {
@@ -29,8 +29,6 @@ export default function SocietyDetailsPage() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
-      <Navbar />
-
       <main className="flex-1 container mx-auto p-4">
         <h1 className="text-2xl font-semibold mb-4">
           Society Details - {societyData.name}

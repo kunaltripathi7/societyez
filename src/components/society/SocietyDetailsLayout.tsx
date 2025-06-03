@@ -3,7 +3,7 @@ import { Outlet, useParams, useNavigate, useLocation } from "react-router-dom";
 import { Building2, Calendar, FileText, Users, Settings } from "lucide-react";
 import TabNavigation from "./TabNavigation";
 import { SocietyData, Tab } from "../../types/society";
-import Navbar from "../Navbar";
+
 
 function SocietyDetailsLayout(): React.ReactNode {
   const { id } = useParams<{ id: string }>();
@@ -37,6 +37,7 @@ function SocietyDetailsLayout(): React.ReactNode {
       label: "Subscription & Demo",
       icon: <Settings size={16} />,
     },
+    {id: "support", label: "Support", icon: <Settings size={16} /> },
   ];
 
   // Handle tab change
@@ -57,8 +58,6 @@ function SocietyDetailsLayout(): React.ReactNode {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
-      <Navbar />
-
       <main className="flex-1 container mx-auto p-8">
         <h1 className="text-2xl font-semibold mb-6">
           Society Details - {societyData.name}

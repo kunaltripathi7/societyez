@@ -165,7 +165,7 @@ const Societies: React.FC = () => {
               <Input
                 type="date"
                 placeholder="dd-mm-yyyy"
-                className="pl-9 w-40"
+                className="pl-8 w-40"
               />
             </div>
             <span className="text-gray-500">-</span>
@@ -174,7 +174,7 @@ const Societies: React.FC = () => {
               <Input
                 type="date"
                 placeholder="dd-mm-yyyy"
-                className="pl-10 w-40"
+                className="pl-8 w-40"
               />
             </div>
           </div>
