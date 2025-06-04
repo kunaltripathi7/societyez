@@ -17,8 +17,10 @@ import Ledger from "./pages/Ledger";
 import Societies from "./pages/Societies";
 import AccessRequests from "./pages/AccessRequests";
 import SocietyTechnicalTab from "./components/society/SocietyTechnicalTab";
-import Home from "./pages/home/Index";
-import Dashboard from "./pages/Dashboard";
+// import home from "./pages/home/index";
+// import dashboard from "./pages/dashboard";
+import Home from "./pages/home/index";
+import Dashboard from "./pages/dashboard";
 
 
 function App() {
