@@ -1,5 +1,5 @@
 import { ThemeProvider } from "./components/providers/theme-provider";
-import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import { Route, Routes, BrowserRouter as Router, Navigate } from "react-router-dom";
 import { Toaster } from "./components/ui/sonner";
 
 import AppLayout from "./components/layouts/AppLayout";
@@ -17,8 +17,6 @@ import Ledger from "./pages/Ledger";
 import Societies from "./pages/Societies";
 import AccessRequests from "./pages/AccessRequests";
 import SocietyTechnicalTab from "./components/society/SocietyTechnicalTab";
-// import home from "./pages/home/index";
-// import dashboard from "./pages/dashboard";
 import Home from "./pages/home/index";
 import Dashboard from "./pages/dashboard";
 
@@ -30,6 +28,7 @@ function App() {
       <Router>
         <Routes>
           {/* Auth routes */}
+          <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/signup" element={<Signup />} />
