@@ -17,6 +17,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 const Navbar = () => {
   const navigate = useNavigate();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+   const [user] = useState({
+    username: 'John Doe',
+    email: 'john@example.com',
+    avatarUrl: '/default-avatar.png'
+  });
 
 
 return (
@@ -71,9 +76,16 @@ return (
                 className="flex items-center gap-2 px-3 py-2 h-auto hover:bg-slate-50 rounded-lg transition-colors"
               >
                 <Avatar className="h-8 w-8">
-                  <AvatarImage src="/path-to-user-image.jpg" alt="Username" />
+                <AvatarImage 
+                  src={user?.avatarUrl || '/default-avatar.png'} 
+                  alt={user?.username || 'User'}
+                  onError={(e) => {
+                    e.currentTarget.src = '/default-avatar.jpg'
+                  }}
+                />
                   <AvatarFallback className="bg-gradient-to-br from-blue-500 to-blue-600 text-white text-sm font-semibold">
-                    U
+                    {/* Show first letter of username or default to U */}
+                    {user?.username?.[0]?.toUpperCase() || 'U'}
                   </AvatarFallback>
                 </Avatar>
                 <span className="text-slate-700 text-sm font-medium hidden sm:block">Username</span>
