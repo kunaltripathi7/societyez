@@ -20,6 +20,7 @@ import SocietyTechnicalTab from "./components/society/SocietyTechnicalTab";
 import Home from "./pages/home/Index";
 import Dashboard from "./pages/Dashboard";
 
+
 function App() {
   return (
     <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
