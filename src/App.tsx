@@ -4,8 +4,6 @@ import { Toaster } from "./components/ui/sonner";
 
 import AppLayout from "./components/layouts/AppLayout";
 import Login from "./pages/auth/Login";
-import Home from "./pages/home/Index";
-import Dashboard from "./pages/Dashboard";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 import Signup from "./pages/auth/Signup";
 import Profile from "./pages/Profile";
@@ -19,6 +17,8 @@ import Ledger from "./pages/Ledger";
 import Societies from "./pages/Societies";
 import AccessRequests from "./pages/AccessRequests";
 import SocietyTechnicalTab from "./components/society/SocietyTechnicalTab";
+import Home from "./pages/home/Index";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
