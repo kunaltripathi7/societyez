@@ -2,9 +2,8 @@ import React, { useState, useMemo } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { BanknoteArrowUp, BanknoteArrowDown, Scale  } from 'lucide-react';
+import { BanknoteArrowUp, BanknoteArrowDown, Scale, Calendar, Building2, FileText, TrendingUp, Wallet } from 'lucide-react';
 
-import { useNavigate } from 'react-router-dom';
 import {
   Select,
   SelectContent,
@@ -118,8 +117,6 @@ const LedgerPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage] = useState(10)
 
-  const navigate = useNavigate();
-
   const summary: LedgerSummary = useMemo(() => {
     const totalCredits = mockLedgerData
       .filter(entry => entry.type === 'Credit')
@@ -162,19 +159,75 @@ const LedgerPage: React.FC = () => {
     })
   }
 
+  // Mobile Card Component
+  const MobileEntryCard = ({ entry }: { entry: LedgerEntry }) => (
+    <Card key={entry.id} className="mb-4 shadow-sm border-l-4 border-l-blue-500">
+      <CardContent className="p-4">
+        <div className="flex items-start justify-between mb-3">
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-1">
+              <Calendar className="h-4 w-4 text-muted-foreground" />
+              <span className="text-sm font-medium">{formatDate(entry.date)}</span>
+            </div>
+            <div className="flex items-center gap-2 mb-2">
+              <Building2 className="h-4 w-4 text-muted-foreground" />
+              <span className="text-sm text-muted-foreground">#{entry.societyId}</span>
+              <span className="text-sm font-medium">{entry.societyName}</span>
+            </div>
+          </div>
+          <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
+            entry.type === 'Credit' 
+              ? 'bg-green-100 text-green-800' 
+              : 'bg-red-100 text-red-800'
+          }`}>
+            {entry.type}
+          </span>
+        </div>
+        
+        <div className="flex items-center gap-2 mb-3">
+          <FileText className="h-4 w-4 text-muted-foreground" />
+          <span className="text-sm">{entry.description}</span>
+        </div>
+        
+        <div className="flex items-center justify-between pt-2 border-t">
+          <div className="flex items-center gap-2">
+            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+            <div className="text-right">
+              <div className="text-xs text-muted-foreground">Amount</div>
+              <div className={`text-sm font-bold ${
+                entry.type === 'Credit' ? 'text-green-600' : 'text-red-600'
+              }`}>
+                {formatCurrency(entry.amount)}
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <Wallet className="h-4 w-4 text-muted-foreground" />
+            <div className="text-right">
+              <div className="text-xs text-muted-foreground">Balance</div>
+              <div className="text-sm font-bold text-blue-600">
+                {formatCurrency(entry.balance)}
+              </div>
+            </div>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  )
+
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-4 lg:p-6 space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center space-x-4">
-          <Button variant="ghost" size="sm" className='cursor-pointer hover:text-white' onClick={() => navigate(-1)}>
+          <Button variant="ghost" size="sm" className='cursor-pointer hover:text-white'>
             <ArrowLeft className="h-4 w-4" />
           </Button>
-          <h1 className="text-2xl font-semibold text-primary">Ledger</h1>
+          <h1 className="text-xl sm:text-2xl font-semibold text-primary">Ledger</h1>
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-2 w-full sm:w-auto">
           <Select defaultValue="dd-mm-yy">
-            <SelectTrigger className="w-32 cursor-pointer">
+            <SelectTrigger className="w-full sm:w-32 cursor-pointer">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -185,70 +238,70 @@ const LedgerPage: React.FC = () => {
           </Select>
           <Button variant="default" size="sm" className='cursor-pointer'>
             <Download className="h-4 w-4 mr-2" />
-            Download
+            <span className="hidden sm:inline">Download</span>
           </Button>
         </div>
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
         <Card>
           <CardHeader className="pb-2">
             <div className='flex items-center justify-between'>
-            <CardTitle className="text-sm font-medium text-muted-foreground">
-              Total Credits
-            </CardTitle>
-          <BanknoteArrowUp className="h-6 w-6 text-green-500" />
+              <CardTitle className="text-sm font-medium text-muted-foreground">
+                Total Credits
+              </CardTitle>
+              <BanknoteArrowUp className="h-5 w-5 sm:h-6 sm:w-6 text-green-500" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{formatCurrency(summary.totalCredits)}</div>
+            <div className="text-xl sm:text-2xl font-bold text-green-500">{formatCurrency(summary.totalCredits)}</div>
           </CardContent>
         </Card>
         
         <Card>
           <CardHeader className="pb-2">
             <div className='flex items-center justify-between'>
-            <CardTitle className="text-sm font-medium text-muted-foreground">
-              Total Debits
-            </CardTitle>
-            <BanknoteArrowDown className="h-6 w-6 text-red-500" />
+              <CardTitle className="text-sm font-medium text-muted-foreground">
+                Total Debits
+              </CardTitle>
+              <BanknoteArrowDown className="h-5 w-5 sm:h-6 sm:w-6 text-red-500" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{formatCurrency(summary.totalDebits)}</div>
+            <div className="text-xl sm:text-2xl font-bold text-red-500">{formatCurrency(summary.totalDebits)}</div>
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="sm:col-span-2 lg:col-span-1">
           <CardHeader className="pb-2">
             <div className='flex items-center justify-between'>
-            <CardTitle className="text-sm font-medium text-muted-foreground">
-              Closing Balance
-            </CardTitle>
-            <Scale className="h-6 w-6 text-blue-500" />
+              <CardTitle className="text-sm font-medium text-muted-foreground">
+                Closing Balance
+              </CardTitle>
+              <Scale className="h-5 w-5 sm:h-6 sm:w-6 text-blue-500" />
             </div>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{formatCurrency(summary.closingBalance)}</div>
+            <div className="text-xl sm:text-2xl font-bold text-green-500">{formatCurrency(summary.closingBalance)}</div>
           </CardContent>
         </Card>
       </div>
 
       {/* Filters */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-4">
-          <div className="relative">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
+          <div className="relative w-full sm:w-auto">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               placeholder="Search description"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 w-64"
+              className="pl-10 w-full sm:w-64"
             />
           </div>
           <Select value={typeFilter} onValueChange={setTypeFilter}>
-            <SelectTrigger className="w-32">
+            <SelectTrigger className="w-full sm:w-32">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -259,59 +312,78 @@ const LedgerPage: React.FC = () => {
           </Select>
         </div>
         <div className="text-sm text-muted-foreground">
-          Showing 1-10 of {filteredData.length} entries
+          Showing {((currentPage - 1) * itemsPerPage) + 1}-{Math.min(currentPage * itemsPerPage, filteredData.length)} of {filteredData.length} entries
         </div>
       </div>
 
-      {/* Table */}
-      <Card className='px-2'>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Date</TableHead>
-              <TableHead>Society ID</TableHead>
-              <TableHead>Society Name</TableHead>
-              <TableHead>Description</TableHead>
-              <TableHead>Type</TableHead>
-              <TableHead className="text-right">Amount</TableHead>
-              <TableHead className="text-right">Balance</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
+      {/* Mobile/Tablet Card View */}
+      <div className="block lg:hidden">
+        {paginatedData.length > 0 ? (
+          <div className="space-y-4">
             {paginatedData.map((entry) => (
-              <TableRow key={entry.id}>
-                <TableCell>{formatDate(entry.date)}</TableCell>
-                <TableCell>
-                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-secondary text-gray-800">
-                  #{entry.societyId}
-                  </span>
-                </TableCell>
-                <TableCell>{entry.societyName}</TableCell>
-                <TableCell>{entry.description}</TableCell>
-                <TableCell>
-                  <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs ${
-                    entry.type === 'Credit' 
-                      ? 'bg-green-100 text-green-800' 
-                      : 'bg-red-100 text-red-800'
-                  }`}>
-                    {entry.type}
-                  </span>
-                </TableCell>
-                <TableCell className="text-right">{formatCurrency(entry.amount)}</TableCell>
-                <TableCell className="text-right">{formatCurrency(entry.balance)}</TableCell>
-              </TableRow>
+              <MobileEntryCard key={entry.id} entry={entry} />
             ))}
-          </TableBody>
-        </Table>
-      </Card>
+          </div>
+        ) : (
+          <Card>
+            <CardContent className="p-8 text-center">
+              <div className="text-muted-foreground">No entries found matching your criteria.</div>
+            </CardContent>
+          </Card>
+        )}
+      </div>
+
+      {/* Desktop Table View */}
+      <div className="hidden lg:block">
+        <Card className='px-2'>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Date</TableHead>
+                <TableHead>Society ID</TableHead>
+                <TableHead>Society Name</TableHead>
+                <TableHead>Description</TableHead>
+                <TableHead>Type</TableHead>
+                <TableHead className="text-right">Amount</TableHead>
+                <TableHead className="text-right">Balance</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {paginatedData.map((entry) => (
+                <TableRow key={entry.id}>
+                  <TableCell>{formatDate(entry.date)}</TableCell>
+                  <TableCell>
+                    <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-secondary text-gray-800">
+                    #{entry.societyId}
+                    </span>
+                  </TableCell>
+                  <TableCell>{entry.societyName}</TableCell>
+                  <TableCell>{entry.description}</TableCell>
+                  <TableCell>
+                    <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs ${
+                      entry.type === 'Credit' 
+                        ? 'bg-green-100 text-green-800' 
+                        : 'bg-red-100 text-red-800'
+                    }`}>
+                      {entry.type}
+                    </span>
+                  </TableCell>
+                  <TableCell className="text-right">{formatCurrency(entry.amount)}</TableCell>
+                  <TableCell className="text-right">{formatCurrency(entry.balance)}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Card>
+      </div>
 
       {/* Pagination */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="text-sm text-muted-foreground">
           Page {currentPage} of {totalPages}
         </div>
         <Pagination>
-          <PaginationContent>
+          <PaginationContent className="flex-wrap">
             <PaginationItem>
               <PaginationPrevious 
                 onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}

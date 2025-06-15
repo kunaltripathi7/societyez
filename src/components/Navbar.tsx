@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { House, Layout, Menu, X, Settings, LogOut, Bell, User, ChevronDown } from "lucide-react";
 import logo from "../assets/logo.svg"; 
 
-import { Button } from "../components/ui/button"; 
+import { Button } from "@/components/ui/button"; 
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -70,11 +70,12 @@ return (
         <div className="flex items-center gap-3">
           {/* User Profile with Avatar Dropdown */}
           <DropdownMenu>
-            <DropdownMenuTrigger asChild className="cursor-pointer">
+            <DropdownMenuTrigger className="cursor-pointer">
               <Button 
                 variant="ghost" 
                 className="flex items-center gap-2 px-3 py-2 h-auto hover:bg-slate-50 rounded-lg transition-colors"
               >
+
                 <Avatar className="h-8 w-8">
                 <AvatarImage 
                   src={user?.avatarUrl || '/default-avatar.png'} 
@@ -92,10 +93,10 @@ return (
                 <ChevronDown className="h-4 w-4 text-slate-400" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
+            <DropdownMenuContent align="end" className="w-56 z-50">
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">Username</p>
+                  <p className="text-sm font-medium leading-none select-none">Username</p>
                     <p className="text-xs leading-none text-muted-foreground">
                     user@example.com
                     </p>
@@ -113,10 +114,6 @@ return (
                   <Bell className="mr-2 h-4 w-4 hover:text-white" />
                   Notifications
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="cursor-pointer">
-                  <Settings className="mr-2 h-4 w-4 hover:text-white" />
-                  Settings
-                  </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
                   className="text-red-600 cursor-pointer hover:bg-red-500 hover:text-white focus:bg-red-600 focus:text-white"
@@ -126,13 +123,13 @@ return (
                   Logout
                   </DropdownMenuItem>
                 </DropdownMenuContent>
-                </DropdownMenu>
+          </DropdownMenu>
 
           {/* Mobile Menu Button */}
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden cursor-pointer"
             onClick={() => setMobileNavOpen(!mobileNavOpen)}
           >
             {mobileNavOpen ? (
@@ -145,42 +142,71 @@ return (
       </div>
     </header>
 
-    {/* Mobile Navigation - Updated to match desktop changes */}
-    {mobileNavOpen && (
-      <div className="fixed inset-0 top-16 z-20 bg-white md:hidden">
-        <nav className="container py-6 flex flex-col gap-4">
-          <NavLink
-            to="/home"
-            className={({ isActive }) =>
-              `flex items-center gap-2 px-4 py-3 rounded-lg ${
-                isActive
-                  ? "bg-orange-50 text-orange-500 font-medium"
-                  : "hover:bg-slate-100 text-slate-600"
-              }`
-            }
-            onClick={() => setMobileNavOpen(false)}
-          >
-            <House className="h-5 w-5" />
-            <span>Home</span>
-          </NavLink>
+{mobileNavOpen && (
+ <>
+   {/* Backdrop */}
+   <div 
+     className="fixed inset-0 top-16 bg-black/20 backdrop-blur-sm z-20 md:hidden"
+     onClick={() => setMobileNavOpen(false)}
+   />
+   
+   {/* Side Menu */}
+   <div className="fixed right-0 top-16 h-[calc(100vh-4rem)] w-80 bg-white shadow-xl z-30 md:hidden transform transition-transform duration-300 ease-out">
+     <div className="flex flex-col h-full">
+       {/* Header */}
+       <div className="px-6 py-4 border-b border-slate-200">
+         <h2 className="text-lg font-semibold text-slate-900">Navigation</h2>
+       </div>
+       
+       {/* Navigation */}
+       <nav className="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+         <NavLink
+           to="/home"
+           className={({ isActive }) =>
+             `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
+               isActive
+                 ? "bg-secondary text-primary font-medium shadow-sm"
+                 : "hover:bg-slate-50 text-slate-600 hover:text-slate-900"
+             }`
+           }
+           onClick={() => setMobileNavOpen(false)}
+         >
+           <div className={`p-1 rounded-lg ${
+             ({ isActive }: { isActive: boolean }) => isActive ? "bg-primary/10" : "bg-slate-100"
+           }`}>
+             <House className="h-5 w-5" />
+           </div>
+           <span className="font-medium">Home</span>
+         </NavLink>
 
-          <NavLink
-            to="/dashboard"
-            className={({ isActive }) =>
-              `flex items-center gap-2 px-4 py-3 rounded-lg ${
-                isActive
-                  ? "bg-orange-50 text-orange-500 font-medium"
-                  : "hover:bg-slate-100 text-slate-600"
-              }`
-            }
-            onClick={() => setMobileNavOpen(false)}
-          >
-            <Layout className="h-5 w-5" />
-            <span>Dashboard</span>
-          </NavLink>
-        </nav>
-      </div>
-    )}
+         <NavLink
+           to="/dashboard"
+           className={({ isActive }) =>
+             `flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
+               isActive
+                 ? "bg-secondary text-primary font-medium shadow-sm"
+                 : "hover:bg-slate-50 text-slate-600 hover:text-slate-900"
+             }`
+           }
+           onClick={() => setMobileNavOpen(false)}
+         >
+           <div className={`p-1 rounded-lg ${
+             ({ isActive } : {isActive : boolean}) => isActive ? "bg-primary/10" : "bg-slate-100"
+           }`}>
+             <Layout className="h-5 w-5" />
+           </div>
+           <span className="font-medium">Dashboard</span>
+         </NavLink>
+       </nav>
+       
+       {/* Footer */}
+       <div className="px-6 py-4 border-t border-slate-200">
+         <p className="text-xs text-slate-500">© 2024 Your App</p>
+       </div>
+     </div>
+   </div>
+ </>
+)}
   </>
 );
 }

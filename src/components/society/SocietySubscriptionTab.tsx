@@ -40,23 +40,23 @@ function SocietySubscriptionTab(): React.ReactNode {
   }));
 
   return (
-    <div className="p-4">
-      <div className="grid grid-cols-2 gap-8">
+    <div className="p-4 sm:p-6 lg:p-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
         {/* Current Subscription Section */}
-        <div>
-          <h2 className="font-bold text-lg mb-4">Current Subscription</h2>
+        <div className="order-1">
+          <h2 className="font-bold text-lg sm:text-xl mb-4">Current Subscription</h2>
 
           <div className="bg-orange-50 border border-orange-100 rounded-md p-4 mb-4">
-            <div className="flex justify-between items-center">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
               <div>
-                <h3 className="text-primary font-medium">
+                <h3 className="text-primary font-medium text-sm sm:text-base">
                   Premium Quarterly Plan
                 </h3>
                 <p className="text-sm text-gray-600">
                   Valid until March 15, 2025
                 </p>
               </div>
-              <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs">
+              <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs self-start sm:self-center">
                 Active
               </span>
             </div>
@@ -64,57 +64,57 @@ function SocietySubscriptionTab(): React.ReactNode {
 
           <div className="space-y-3 mb-6">
             <div className="flex items-center gap-2">
-              <Check size={18} className="text-green-500" />
-              <span>Unlimited users</span>
+              <Check size={18} className="text-green-500 flex-shrink-0" />
+              <span className="text-sm sm:text-base">Unlimited users</span>
             </div>
             <div className="flex items-center gap-2">
-              <Check size={18} className="text-green-500" />
-              <span>Advanced analytics</span>
+              <Check size={18} className="text-green-500 flex-shrink-0" />
+              <span className="text-sm sm:text-base">Advanced analytics</span>
             </div>
             <div className="flex items-center gap-2">
-              <Check size={18} className="text-green-500" />
-              <span>Priority support</span>
+              <Check size={18} className="text-green-500 flex-shrink-0" />
+              <span className="text-sm sm:text-base">Priority support</span>
             </div>
           </div>
 
-          <div className="flex gap-3">
-            <Button className="bg-primary hover:bg-accent cursor-pointer">
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Button className="bg-primary hover:bg-accent cursor-pointer w-full sm:w-auto">
               Upgrade Plan
             </Button>
-            <Button variant="outline" className="cursor-pointer">
+            <Button variant="outline" className="cursor-pointer w-full sm:w-auto">
               Cancel Subscription
             </Button>
           </div>
         </div>
 
         {/* Assign Demo Access Section */}
-        <div>
-          <h2 className="font-bold text-lg mb-4">Assign Demo Access</h2>
+        <div className="order-2">
+          <h2 className="font-bold text-lg sm:text-xl mb-4">Assign Demo Access</h2>
 
           <div className="space-y-4">
             <div>
-  <label className="block text-sm font-medium text-gray-700 mb-1">
-    Duration
-  </label>
-  <Select>
-    <SelectTrigger className="w-full">
-      <SelectValue placeholder="Select duration" />
-    </SelectTrigger>
-    <SelectContent>
-      {subscriptionPlans.map((plan) => (
-        <SelectItem 
-          key={plan.value} 
-          value={plan.value.toString()}
-          className="cursor-pointer"
-        >
-          {plan.label}
-        </SelectItem>
-      ))}
-    </SelectContent>
-  </Select>
-</div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Duration
+              </label>
+              <Select>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select duration" />
+                </SelectTrigger>
+                <SelectContent>
+                  {subscriptionPlans.map((plan) => (
+                    <SelectItem 
+                      key={plan.value} 
+                      value={plan.value.toString()}
+                      className="cursor-pointer"
+                    >
+                      {plan.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
 
-             <div>
+            <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Start Date
               </label>
@@ -128,11 +128,11 @@ function SocietySubscriptionTab(): React.ReactNode {
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <Checkbox id="basic-features" defaultChecked />
-                  <label htmlFor="basic-features" className="cursor-pointer">Basic features</label>
+                  <label htmlFor="basic-features" className="cursor-pointer text-sm sm:text-base">Basic features</label>
                 </div>
                 <div className="flex items-center gap-2">
                   <Checkbox id="premium-features" defaultChecked />
-                  <label htmlFor="premium-features" className="cursor-pointer">Premium features</label>
+                  <label htmlFor="premium-features" className="cursor-pointer text-sm sm:text-base">Premium features</label>
                 </div>
               </div>
             </div>
@@ -146,46 +146,67 @@ function SocietySubscriptionTab(): React.ReactNode {
 
       {/* Subscription History Section */}
       <div className="mt-8">
-        <h2 className="font-bold text-lg mb-4">Subscription History</h2>
+        <h2 className="font-bold text-lg sm:text-xl mb-4">Subscription History</h2>
 
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Date
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Plan
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Amount
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Status
-              </th>
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {subscriptionHistory.map((entry, index) => (
-              <tr key={index}>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {entry.date}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-600">
-                  {entry.plan}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {entry.amount}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span className="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                    {entry.status}
-                  </span>
-                </td>
+        {/* Mobile Card View */}
+        <div className="block md:hidden space-y-4">
+          {subscriptionHistory.map((entry, index) => (
+            <div key={index} className="bg-white border rounded-lg p-4 shadow-sm">
+              <div className="flex justify-between items-start mb-2">
+                <div>
+                  <p className="font-medium text-blue-600 text-sm">{entry.plan}</p>
+                  <p className="text-sm text-gray-500">{entry.date}</p>
+                </div>
+                <span className="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                  {entry.status}
+                </span>
+              </div>
+              <p className="text-sm text-gray-900 font-medium">{entry.amount}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop Table View */}
+        <div className="hidden md:block overflow-x-auto">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-4 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Date
+                </th>
+                <th className="px-4 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Plan
+                </th>
+                <th className="px-4 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Amount
+                </th>
+                <th className="px-4 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Status
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {subscriptionHistory.map((entry, index) => (
+                <tr key={index}>
+                  <td className="px-4 lg:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {entry.date}
+                  </td>
+                  <td className="px-4 lg:px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-600">
+                    {entry.plan}
+                  </td>
+                  <td className="px-4 lg:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {entry.amount}
+                  </td>
+                  <td className="px-4 lg:px-6 py-4 whitespace-nowrap">
+                    <span className="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                      {entry.status}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

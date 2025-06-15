@@ -8,7 +8,7 @@ function TabNavigation({
 }: TabNavigationProps): JSX.Element {
   return (
     <div className="border-b border-gray-200">
-      <nav className="flex space-x-4" aria-label="Tabs">
+      <nav className="flex space-x-4 overflow-x-auto scrollbar-hide pb-2" aria-label="Tabs">
         {tabs.map((tab) => (
           <button
             key={tab.id}

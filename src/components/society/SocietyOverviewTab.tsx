@@ -19,14 +19,14 @@ function SocietyOverviewTab(): React.ReactNode {
         />
         <InfoRow label="Admin in Charge" value={societyData.adminInCharge} />
 
-        <div className="flex gap-2 mt-6">
-          <Button className="flex items-center gap-2 bg-primary hover:bg-accent cursor-pointer">
-            <MessageSquare size={16} />
-            Contact Society
+        <div className="flex flex-col sm:flex-row gap-2 mt-6 w-full">
+          <Button className="flex items-center justify-center gap-1 sm:gap-2 bg-primary hover:bg-accent cursor-pointer text-xs sm:text-sm md:text-base px-2 py-1 sm:px-3 sm:py-2 md:px-4 flex-1 min-w-0">
+            <MessageSquare size={14} className="sm:w-4 sm:h-4 flex-shrink-0" />
+            <span className="truncate">Contact Society</span>
           </Button>
-          <Button variant="outline" className="flex items-center gap-2 cursor-pointer">
-            <Download size={16} />
-            Download Details
+          <Button variant="outline" className="flex items-center justify-center gap-1 sm:gap-2 cursor-pointer text-xs sm:text-sm md:text-base px-2 py-1 sm:px-3 sm:py-2 md:px-4 flex-1 min-w-0">
+            <Download size={14} className="sm:w-4 sm:h-4 flex-shrink-0" />
+            <span className="truncate">Download Details</span>
           </Button>
         </div>
       </Card>

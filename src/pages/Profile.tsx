@@ -1,11 +1,30 @@
-import { Eye, Monitor, Smartphone } from "lucide-react";
+import { Eye, EyeOff, Monitor, Smartphone } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useState } from "react";
 
 const ProfileSettings = () => {
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const togglePasswordVisibility = (field) => {
+    switch (field) {
+      case 'current':
+        setShowCurrentPassword(!showCurrentPassword);
+        break;
+      case 'new':
+        setShowNewPassword(!showNewPassword);
+        break;
+      case 'confirm':
+        setShowConfirmPassword(!showConfirmPassword);
+        break;
+    }
+  };
+
   return (
     <>
       <div className="container mx-auto py-6 px-4 max-w-4xl">
@@ -67,11 +86,26 @@ const ProfileSettings = () => {
                 Current Password
               </label>
               <div className="relative mt-1">
-                <Input type="password" />
-                <Eye
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer"
-                  size={18}
+                <Input 
+                  type={showCurrentPassword ? "text" : "password"}
+                  autoComplete="current-password"
+                  className="pr-10 [&::-ms-reveal]:hidden [&::-webkit-credentials-auto-fill-button]:hidden"
+                  style={{
+                    backgroundImage: 'none !important',
+                    WebkitTextSecurity: showCurrentPassword ? 'none' : 'disc'
+                  }}
                 />
+                <button
+                  type="button"
+                  onClick={() => togglePasswordVisibility('current')}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none z-10"
+                >
+                  {showCurrentPassword ? (
+                    <EyeOff size={18} />
+                  ) : (
+                    <Eye size={18} />
+                  )}
+                </button>
               </div>
             </div>
 
@@ -80,11 +114,26 @@ const ProfileSettings = () => {
                 New Password
               </label>
               <div className="relative mt-1">
-                <Input type="password" />
-                <Eye
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer"
-                  size={18}
+                <Input 
+                  type={showNewPassword ? "text" : "password"}
+                  autoComplete="new-password"
+                  className="pr-10 [&::-ms-reveal]:hidden [&::-webkit-credentials-auto-fill-button]:hidden"
+                  style={{
+                    backgroundImage: 'none !important',
+                    WebkitTextSecurity: showNewPassword ? 'none' : 'disc'
+                  }}
                 />
+                <button
+                  type="button"
+                  onClick={() => togglePasswordVisibility('new')}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none z-10"
+                >
+                  {showNewPassword ? (
+                    <EyeOff size={18} />
+                  ) : (
+                    <Eye size={18} />
+                  )}
+                </button>
               </div>
             </div>
 
@@ -93,11 +142,26 @@ const ProfileSettings = () => {
                 Confirm New Password
               </label>
               <div className="relative mt-1">
-                <Input type="password" />
-                <Eye
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer"
-                  size={18}
+                <Input 
+                  type={showConfirmPassword ? "text" : "password"}
+                  autoComplete="new-password"
+                  className="pr-10 [&::-ms-reveal]:hidden [&::-webkit-credentials-auto-fill-button]:hidden"
+                  style={{
+                    backgroundImage: 'none !important',
+                    WebkitTextSecurity: showConfirmPassword ? 'none' : 'disc'
+                  }}
                 />
+                <button
+                  type="button"
+                  onClick={() => togglePasswordVisibility('confirm')}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 focus:outline-none z-10"
+                >
+                  {showConfirmPassword ? (
+                    <EyeOff size={18} />
+                  ) : (
+                    <Eye size={18} />
+                  )}
+                </button>
               </div>
             </div>
 

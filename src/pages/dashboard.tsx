@@ -81,6 +81,62 @@ const Dashboard: React.FC = () => {
 
             <Card
               className={`group cursor-pointer transition-all duration-300 ${
+                hoveredCard === "ledger" ? "border-primary shadow-md" : ""
+              }`}
+              onMouseEnter={() => setHoveredCard("ledger")}
+              onMouseLeave={() => setHoveredCard(null)}
+              onClick={() => handleCardClick(cardDestinations.ledger)}
+            >
+              <CardHeader className="flex flex-row items-center justify-between pb-2">
+                <CardTitle className="text-sm font-medium">
+                  Monthly Ledger
+                </CardTitle>
+                <ScrollText className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
+              </CardHeader>
+              <CardContent className="relative">
+                <div className="text-2xl font-bold">₹12.4L</div>
+                <div className="flex items-center text-sm text-green-500">
+                  <ArrowUp className="h-4 w-4 mr-1" />
+                  <span>18% from last month</span>
+                </div>
+                <ChevronRight className="absolute right-2 bottom-2 h-5 w-5 text-slate-300 opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all" />
+              </CardContent>
+            </Card>
+
+             <Card
+              className={`group cursor-pointer transition-all duration-300 ${
+                hoveredCard === "access" ? "border-primary shadow-md" : ""
+              }`}
+              onMouseEnter={() => setHoveredCard("access")}
+              onMouseLeave={() => setHoveredCard(null)}
+              onClick={() => handleCardClick(cardDestinations.access)}
+            >
+              <CardHeader className="flex flex-row items-center justify-between pb-2">
+                <CardTitle className="text-sm font-medium">
+                  Access Requests
+                </CardTitle>
+                <Key className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
+              </CardHeader>
+              <CardContent className="relative">
+                <div className="text-2xl font-bold">12</div>
+                <div className="flex items-center text-sm text-amber-500">
+                  <span className="h-2 w-2 bg-amber-500 rounded-full mr-1"></span>
+                  <span>Pending approval</span>
+                </div>
+                <ChevronRight className="absolute right-2 bottom-2 h-5 w-5 text-slate-300 opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all" />
+              </CardContent>
+            </Card>
+
+           
+
+            
+          </div>
+
+          {/* Bottom row of cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+             <Card
+              className={`group cursor-pointer transition-all duration-300 ${
                 hoveredCard === "payments" ? "border-primary shadow-md" : ""
               }`}
               onMouseEnter={() => setHoveredCard("payments")}
@@ -102,34 +158,6 @@ const Dashboard: React.FC = () => {
                 <ChevronRight className="absolute right-2 bottom-2 h-5 w-5 text-slate-300 opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all" />
               </CardContent>
             </Card>
-
-            <Card
-              className={`group cursor-pointer transition-all duration-300 ${
-                hoveredCard === "users" ? "border-primary shadow-md" : ""
-              }`}
-              onMouseEnter={() => setHoveredCard("users")}
-              onMouseLeave={() => setHoveredCard(null)}
-              onClick={() => handleCardClick(cardDestinations.users)}
-            >
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Active Users
-                </CardTitle>
-                <Users className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
-              </CardHeader>
-              <CardContent className="relative">
-                <div className="text-2xl font-bold">1,849</div>
-                <div className="flex items-center text-sm text-green-500">
-                  <ArrowUp className="h-4 w-4 mr-1" />
-                  <span>24% from last month</span>
-                </div>
-                <ChevronRight className="absolute right-2 bottom-2 h-5 w-5 text-slate-300 opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all" />
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Bottom row of cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <Card
               className={`group cursor-pointer transition-all duration-300 ${
                 hoveredCard === "notifications"
@@ -158,51 +186,31 @@ const Dashboard: React.FC = () => {
 
             <Card
               className={`group cursor-pointer transition-all duration-300 ${
-                hoveredCard === "access" ? "border-primary shadow-md" : ""
+                hoveredCard === "users" ? "border-primary shadow-md" : ""
               }`}
-              onMouseEnter={() => setHoveredCard("access")}
+              onMouseEnter={() => setHoveredCard("users")}
               onMouseLeave={() => setHoveredCard(null)}
-              onClick={() => handleCardClick(cardDestinations.access)}
+              onClick={() => handleCardClick(cardDestinations.users)}
             >
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-sm font-medium">
-                  Access Requests
+                  Active Users
                 </CardTitle>
-                <Key className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
+                <Users className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
               </CardHeader>
               <CardContent className="relative">
-                <div className="text-2xl font-bold">12</div>
-                <div className="flex items-center text-sm text-amber-500">
-                  <span className="h-2 w-2 bg-amber-500 rounded-full mr-1"></span>
-                  <span>Pending approval</span>
+                <div className="text-2xl font-bold">1,849</div>
+                <div className="flex items-center text-sm text-green-500">
+                  <ArrowUp className="h-4 w-4 mr-1" />
+                  <span>24% from last month</span>
                 </div>
                 <ChevronRight className="absolute right-2 bottom-2 h-5 w-5 text-slate-300 opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all" />
               </CardContent>
             </Card>
 
-            <Card
-              className={`group cursor-pointer transition-all duration-300 ${
-                hoveredCard === "ledger" ? "border-primary shadow-md" : ""
-              }`}
-              onMouseEnter={() => setHoveredCard("ledger")}
-              onMouseLeave={() => setHoveredCard(null)}
-              onClick={() => handleCardClick(cardDestinations.ledger)}
-            >
-              <CardHeader className="flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Monthly Ledger
-                </CardTitle>
-                <ScrollText className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
-              </CardHeader>
-              <CardContent className="relative">
-                <div className="text-2xl font-bold">₹12.4L</div>
-                <div className="flex items-center text-sm text-green-500">
-                  <ArrowUp className="h-4 w-4 mr-1" />
-                  <span>18% from last month</span>
-                </div>
-                <ChevronRight className="absolute right-2 bottom-2 h-5 w-5 text-slate-300 opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all" />
-              </CardContent>
-            </Card>
+           
+
+            
           </div>
 
           {/* Activity Section */}
