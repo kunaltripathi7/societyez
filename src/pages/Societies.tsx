@@ -143,13 +143,14 @@ const Societies: React.FC = () => {
     // Sort the filtered results
     if (sortField) {
       filtered.sort((a, b) => {
-        let aValue: any = a[sortField as keyof Society]
-        let bValue: any = b[sortField as keyof Society]
+        let aValue = a[sortField as keyof Society]
+        let bValue = b[sortField as keyof Society]
         
         // Special handling for date sorting
         if (sortField === 'dueDate') {
-          aValue = new Date(aValue).getTime()
-          bValue = new Date(bValue).getTime()
+          return sortDirection === 'asc' 
+            ? new Date(aValue).getTime() - new Date(bValue).getTime()
+            : new Date(bValue).getTime() - new Date(aValue).getTime()
         }
         
         // Handle string comparison
@@ -212,7 +213,7 @@ const Societies: React.FC = () => {
 
   const handleSendReminder = (societyId: string, societyName: string) => {
     // Mock function for sending reminder
-    alert(`Reminder sent to ${societyName}`)
+    alert(`Reminder sent to ${societyName} ${societyId}`)
   }
 
   const SortIcon = ({ field }: { field: string }) => {

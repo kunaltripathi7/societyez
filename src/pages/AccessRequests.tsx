@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Check, X, Info, Search, Filter, Calendar, User, Briefcase } from "lucide-react";
+import { Check, X, Info, Search, Filter, Calendar, Briefcase } from "lucide-react";
 
 interface AccessRequest {
   id: string;

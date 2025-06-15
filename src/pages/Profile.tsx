@@ -11,7 +11,7 @@ const ProfileSettings = () => {
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const togglePasswordVisibility = (field) => {
+  const togglePasswordVisibility = (field: string) => {
     switch (field) {
       case 'current':
         setShowCurrentPassword(!showCurrentPassword);
@@ -90,10 +90,10 @@ const ProfileSettings = () => {
                   type={showCurrentPassword ? "text" : "password"}
                   autoComplete="current-password"
                   className="pr-10 [&::-ms-reveal]:hidden [&::-webkit-credentials-auto-fill-button]:hidden"
-                  style={{
-                    backgroundImage: 'none !important',
-                    WebkitTextSecurity: showCurrentPassword ? 'none' : 'disc'
-                  }}
+                  // style={{
+                  //   backgroundImage: 'none !important',
+                  //   WebkitTextSecurity: showCurrentPassword ? 'none' : 'disc'
+                  // }}
                 />
                 <button
                   type="button"
@@ -118,10 +118,10 @@ const ProfileSettings = () => {
                   type={showNewPassword ? "text" : "password"}
                   autoComplete="new-password"
                   className="pr-10 [&::-ms-reveal]:hidden [&::-webkit-credentials-auto-fill-button]:hidden"
-                  style={{
-                    backgroundImage: 'none !important',
-                    WebkitTextSecurity: showNewPassword ? 'none' : 'disc'
-                  }}
+                  // style={{
+                  //   backgroundImage: 'none !important',
+                  //   webkitTextSecurity: showNewPassword ? 'none' : 'disc'
+                  // }}
                 />
                 <button
                   type="button"
@@ -146,10 +146,10 @@ const ProfileSettings = () => {
                   type={showConfirmPassword ? "text" : "password"}
                   autoComplete="new-password"
                   className="pr-10 [&::-ms-reveal]:hidden [&::-webkit-credentials-auto-fill-button]:hidden"
-                  style={{
-                    backgroundImage: 'none !important',
-                    WebkitTextSecurity: showConfirmPassword ? 'none' : 'disc'
-                  }}
+                  // style={{
+                  //   backgroundImage: 'none !important',
+                  //   webkitTextSecurity: showConfirmPassword ? 'none' : 'disc'
+                  // }}
                 />
                 <button
                   type="button"

@@ -1,6 +1,6 @@
 import  { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { House, Layout, Menu, X, Settings, LogOut, Bell, User, ChevronDown } from "lucide-react";
+import { House, Layout, Menu, X, LogOut, Bell, User, ChevronDown } from "lucide-react";
 import logo from "../assets/logo.svg"; 
 
 import { Button } from "@/components/ui/button"; 

@@ -98,7 +98,7 @@ const SocietyRolesTab = () => {
    console.log('Assigning role:', selectedRole, 'to user:', searchUser);
  };
 
- const handleRoleFilter = (role) => {
+ const handleRoleFilter = (role: string) => {
    setFilterRole(role);
  };
 
