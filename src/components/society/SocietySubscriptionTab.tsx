@@ -1,7 +1,11 @@
 // import { useParams } from "react-router-dom";
-import { Check } from "lucide-react";
+import { Check, Calendar } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { Checkbox } from "../../components/ui/checkbox";
+import { Popover, PopoverContent, PopoverTrigger } from "../../components/ui/popover";
+import { Calendar as CalendarComponent } from "../../components/ui/calendar";
+import { cn } from "../../lib/utils";
+import { format } from "date-fns";
 
 import {
   Select,
@@ -11,12 +15,10 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import React from "react";
-import { DatePicker } from "../ui/datePicker";
-
 
 function SocietySubscriptionTab(): React.ReactNode {
   // const { id } = useParams<{ id: string }>();
-   const [date, setDate] = React.useState<Date>();
+  const [date, setDate] = React.useState<Date>();
 
   // Mock subscription history data
   const subscriptionHistory = [
@@ -114,13 +116,37 @@ function SocietySubscriptionTab(): React.ReactNode {
               </Select>
             </div>
 
-            <div>
+         <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Start Date
               </label>
-              <DatePicker date={date} setDate={setDate} />
+              <Popover>
+                <PopoverTrigger className="w-full">
+                  <Button
+                    variant={"outline"}
+                    className={cn(
+                      "w-full justify-start text-left font-normal",
+                      !date && "text-muted-foreground"
+                    )}
+                  >
+                    <Calendar className="mr-2 h-4 w-4" />
+                    {date ? format(date, "PPP") : <span>Pick a date</span>}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent 
+                  className="w-auto p-0" 
+                  align="start"
+                  sideOffset={4}
+                >
+                  <CalendarComponent
+                    mode="single"
+                    selected={date}
+                    onSelect={setDate}
+                    initialFocus
+                  />
+                </PopoverContent>
+              </Popover>
             </div>
-
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Features
